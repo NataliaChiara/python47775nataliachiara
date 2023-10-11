@@ -3,29 +3,7 @@
 # -La clase cliente debe tener minimo 4 atributos y 2 metodos
 # -Se debe utilizar el metodo __str__() para darle nombre a los objetos
 
-# Clase
-
-class Client:
-    def __init__(self, user, mail, password, age):
-        self.user = user
-        self.mail = mail
-        self.__password = password
-        self.age = age
-
-    def __str__(self):
-        return f"Nombre: {self.user}, E-mail: {self.mail}, Edad: {self.age}"
-    
-    def delete_client(self, user):
-        self.user = ''
-        print(f"El usuario: '{user}' fue eliminado con éxito")
-
-    def modify_client(self, user, newUser):
-        self.user = newUser
-        print(f"El usuario: '{user}' fue modificado con éxito")
-
-
-
-# Interaccion
+from paquete_clientes.clientes import Client
 
 def user_managment(): 
 
@@ -33,7 +11,7 @@ def user_managment():
     clients = []
 
     while True:
-        opcion = int(input('Menu de seleccion\nPara agregar usuario seleccione 1\nPara mostrar usuario seleccione 2\nPara eliminación seleccione 3\nPara modificacion seleccione 4\nPara salir seleccione 5:'))
+        opcion = int(input('Menu de seleccion\nPara agregar usuario seleccione 1\nPara mostrar usuario seleccione 2\nPara modificacion seleccione 3\nPara salir seleccione 4:'))
             
         if opcion == 1:
             user = input('Agregue su nombre de usuario: ')
@@ -48,7 +26,10 @@ def user_managment():
                 print('No existe el cliente')
             else:
                 print(str(new_client))
-        elif opcion == 5:
+        elif opcion == 3:
+            newUser = input('Agregue su nuevo nombre de usuario')
+            Client.modify_client(user(new_client), newUser(new_client))
+        elif opcion == 4:
             print("Hasta luego!")
             break
         elif opcion == 1234: #opcion oculta solo para administradores
@@ -58,10 +39,6 @@ def user_managment():
                 print(clients)
         else:
             print('Opcion invalida')
-        # elif opcion == 2:
-        #     sign_up()
-        # elif opcion == 3:
-        #     print('Hasta luego!')
      
        
 
